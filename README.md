@@ -2,34 +2,65 @@
 
 A Python package to deploy FastAPI capable to optimize the water purification dosing process of the chemical "xy". The structure contains a MariaDB database that collect measurements from sensors A and B with the information cleaned. Also, it has integrated regression model to train and predict de chemical dosing.
 
-## Table of contents
 
 ## Installation
 
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
-    
-## Modules
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
-
-## Acknowledgements
-
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+1. If the user wants to isolate dependencies, he can install a virtual environment as follows:
+    ```bash
+    python -m venv GreenWater
+    source GreenWater/bin/activate  # En Windows: GreenWater\Scripts\activate
+    ```
+2. Install dependencies with a conda environment:
+    ```bash
+    conda env create --name recoveredenv --file environment.yml
+    ```
+3. If the user prefers use requirements:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4. To install the package GreenWater with setup file:
+    ```bash
+    pip install -e .
+    ```
 
 
-## Contact
+## Folders
+
+### Data
+Contains the file data.csv with the raw data.
+
+### Database
+Contains the sqlite predictions.db with RegressionModel results ordered by timestamp execution. in the following image you can see its structure using the Dbeaver desktop interface.
+![alt text](image.png)
+
+### GreenWater
+This is the project package with which the api executes its functionalities. It is governed by the Utils() class that stores the different project directories. The methods inside the class are:
+
+- ***data_processing*** : To perform data processing
+- ***train_model*** : To train and save model, updating it with .pkl file
+- ***prediction_and_write_database*** : To determine prediction of the chemical and save the results in a sqlite3 database
+
+### Models
+Is the folder that contains the train results, updating it according to the date of the last training session.
+
+
+## API demostration
+
+To start the API service, execute the following command:
+    ```bash
+    uvicorn api:app --reload
+    ```
+The terminal will display the IP to which the service is pointing. If you using the extension /docs, we can see the main menu:
+![alt text](image-1.png)
+
+- ***/upload*** : Insert csv from data folder
+![alt text](image-2.png)
+
+- ***/train-model*** : Updating training. In the next images, you can see how the .pkl file was updated in the source code when the process was executed in API.
+![alt text](image-3.png)
+![alt text](image-4.png)
+
+- ***/train-model*** : A box is available for entering new sensor B measurements with which to generate predictions. As a result, a json is generated corresponding to the new instance that is added to the database.
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
