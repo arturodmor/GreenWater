@@ -35,7 +35,7 @@ class Utils():
         self.database_path = os.path.join(base_dir, '..', 'database','predictions.db')
 
 
-    def data_processing(self):
+    def data_processing(self,df):
         
         """To prepare data ready for database writing
 
@@ -57,7 +57,7 @@ class Utils():
         return self.df
     
 
-    def train_model(self):
+    def train_model(self,df):
 
         """To train LinearRegression model, and save results
 
