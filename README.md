@@ -31,7 +31,7 @@ Contains the file data.csv with the raw data.
 
 ### Database
 Contains the sqlite predictions.db with RegressionModel results ordered by timestamp execution. in the following image you can see its structure using the Dbeaver desktop interface.
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/8d13f6dc-0db3-4772-9ecd-477d9c7cbb54)
 
 ### GreenWater
 This is the project package with which the api executes its functionalities. It is governed by the Utils() class that stores the different project directories. The methods inside the class are:
