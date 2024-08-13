@@ -1,0 +1,11 @@
+# pip install -r requirements.txt
+
+# to build API
+fastapi
+uvicorn
+python-multipart
+
+# data-science
+pandas
+numpy
+scikit-learn
