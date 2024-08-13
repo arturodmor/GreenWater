@@ -1,6 +1,6 @@
 # GreenWater
 
-A Python package to deploy FastAPI capable to optimize the water purification dosing process of the chemical "xy". The structure contains a MariaDB database that collect measurements from sensors A and B with the information cleaned. Also, it has integrated regression model to train and predict de chemical dosing.
+A Python package to deploy FastAPI capable to optimize the water purification dosing process of the chemical "xy". The structure contains a SQLite3 database that collect measurements from sensors A and B with the information cleaned. Also, it has integrated regression model to train and predict de chemical dosing.
 
 
 ## Installation
@@ -38,9 +38,9 @@ Contains the sqlite predictions.db with RegressionModel results ordered by times
 ### GreenWater
 This is the project package with which the api executes its functionalities. It is governed by the Utils() class that stores the different project directories. The methods inside the class are:
 
-- ***data_processing*** : To perform data processing
-- ***train_model*** : To train and save model, updating it with .pkl file
-- ***prediction_and_write_database*** : To determine prediction of the chemical and save the results in a sqlite3 database
+- ***data_processing*** : To perform data processing.
+- ***train_model*** : To train and save model, updating it with .pkl file.
+- ***prediction_and_write_database*** : To determine prediction of the chemical and save the results in a sqlite3 database.
 
 ### Models
 Is the folder that contains the train results, updating it according to the date of the last training session.
@@ -58,7 +58,7 @@ The terminal will display the IP to which the service is pointing. If you using 
 	<img src="https://github.com/user-attachments/assets/d2be775b-0e63-4479-98e9-31ee6c03fe3d">
 </div>
 
-- ***/upload*** : Insert csv from data folder
+- ***/upload*** : Insert csv from data folder.
 <div align="center">
 	<img src="https://github.com/user-attachments/assets/4846d9fa-1caf-4b1a-8cd5-75d2462416ba">
 </div>
