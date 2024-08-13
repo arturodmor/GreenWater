@@ -1,27 +1,38 @@
 import pandas as pd
 import numpy as np
 import os
+import glob
 import logging
 import pickle as pkl
 from datetime import datetime
 from sklearn.linear_model import LinearRegression
-
+import sqlite3
 
 logger=logging.getLogger(__name__)
 
 class Utils():
 
-    def __init__(self, df = None, csv_path = None, model_path = None):
+    """ This class contains all functions to complete all GreenWater requirements"""
+
+    def __init__(self, df = None, csv_path = None, model_path = None, database_path = None):
         
+        # Dataframe for data science
         self.df = df
 
+        # Base dir to work with relative paths
         base_dir = os.path.dirname(__file__)
 
+        # Path to open data
         self.csv_path = csv_path
         self.csv_path = os.path.join(base_dir, '..', 'data', 'data.csv')
 
+        # Path for save and load model
         self.model_path = model_path
         self.model_path = os.path.join(base_dir, '..', 'models')
+
+        # Path to connect to database
+        self.database_path = database_path
+        self.database_path = os.path.join(base_dir, '..', 'database','predictions.db')
 
 
     def data_processing(self):
@@ -75,3 +86,50 @@ class Utils():
         logger.info(f"New model trained in {train_dt}")
 
         return model
+    
+
+    def prediction_and_write_database(self,sensor_b):
+
+        """To do predictions and write results in database
+
+        Args:
+            sensor_b(float): Input measurements
+
+        Returns:
+            predictions(float)
+            predict_dt(Timestamp): The time when the prediction was done
+        """
+
+        # Open model
+        file = os.listdir(self.model_path)
+
+        with open(os.path.join(self.model_path,file[0]),'rb') as f:
+            model = pkl.load(f)
+
+        # Condition to avoid to store prediction with measurements outside the threshold
+        try:
+            if 5000 <= sensor_b <= 7500:
+                # To do the prediction was necessary pass data in 2D array, but in database only store the float number
+                prediction = model.predict([[sensor_b]])[0][0]
+                predict_dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                raise ValueError("sensor_b is outside of range [5000,7500]")
+    
+        except ValueError as e:
+            logger.error(e)
+
+
+        # DATABASE
+        # Create and establish database connection
+        conn = sqlite3.connect(self.database_path)
+
+        # Interact with database
+        cursor = conn.cursor()
+        cursor.execute('''CREATE TABLE IF NOT EXISTS predictions (predict_dt TIMESTAMP PRIMARY KEY, sensor_b FLOAT, predict_value FLOAT)''')
+        cursor.execute(f'''INSERT INTO predictions (predict_dt, sensor_b, predict_value) VALUES ('{predict_dt}', '{sensor_b}', '{prediction}');''')
+    
+        # Apply changes and close connection
+        conn.commit()
+        conn.close()
+
+        return {"predict_dt": predict_dt, "sensor_b": sensor_b, "value": prediction}
