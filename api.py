@@ -15,7 +15,7 @@ async def upload_file(file:UploadFile = File(...)): # The method waits that user
         f.write(file.file.read())
     return {"FILE_INFO":f"'{file.filename}' is stored in '{file_path}'"}
 
-
+# ENDPOINT 2. Preprocessing data and train models
 @app.post("/train-model")
 async def train_model_endpoint():
     file_location = "data/data.csv"
@@ -23,4 +23,10 @@ async def train_model_endpoint():
     data = functions.data_processing(df=data)
     model = functions.train_model(df=data)
     return {"info": "Model trained and saved"}
+
+# ENDPOINT 3. To do predictions and create database
+@app.post("/predict")
+async def predict(sensor_b: float):
+    prediction = functions.prediction_and_write_database(sensor_b)
+    return prediction
 
