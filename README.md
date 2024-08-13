@@ -49,22 +49,35 @@ Is the folder that contains the train results, updating it according to the date
 ## API demostration
 
 To start the API service, execute the following command:
-
     ```bash
     uvicorn api:app --reload
     ```
     
 The terminal will display the IP to which the service is pointing. If you using the extension /docs, we can see the main menu:
-![image-1](https://github.com/user-attachments/assets/d2be775b-0e63-4479-98e9-31ee6c03fe3d)
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/d2be775b-0e63-4479-98e9-31ee6c03fe3d">
+</div>
 
 - ***/upload*** : Insert csv from data folder
-![image-2](https://github.com/user-attachments/assets/4846d9fa-1caf-4b1a-8cd5-75d2462416ba)
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/4846d9fa-1caf-4b1a-8cd5-75d2462416ba">
+</div>
 
 - ***/train-model*** : Updating training. In the next images, you can see how the .pkl file was updated in the source code when the process was executed in API.
-![image-3](https://github.com/user-attachments/assets/76f9ea9c-eaa8-4131-b51e-14fb6a993867)
-![image-4](https://github.com/user-attachments/assets/f7a90dcb-56e3-4ed6-8944-dc9057c9eb48)
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/76f9ea9c-eaa8-4131-b51e-14fb6a993867">
+</div>
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/f7a90dcb-56e3-4ed6-8944-dc9057c9eb48">
+</div>
 
 - ***/train-model*** : A box is available for entering new sensor B measurements with which to generate predictions. As a result, a json is generated corresponding to the new instance that is added to the database.
-![image-5](https://github.com/user-attachments/assets/bc24ef77-8962-4649-8f02-5ae0f7e82cc6)
-![image-6](https://github.com/user-attachments/assets/af99add0-b4f1-433b-8567-7648fdcb6b91)
-![image-7](https://github.com/user-attachments/assets/2947856f-8379-4e2a-8708-343d97160889)
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/bc24ef77-8962-4649-8f02-5ae0f7e82cc6">
+</div>
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/af99add0-b4f1-433b-8567-7648fdcb6b91">
+</div>
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/2947856f-8379-4e2a-8708-343d97160889">
+</div>
