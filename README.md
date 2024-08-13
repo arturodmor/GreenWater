@@ -51,16 +51,16 @@ To start the API service, execute the following command:
     uvicorn api:app --reload
     ```
 The terminal will display the IP to which the service is pointing. If you using the extension /docs, we can see the main menu:
-![alt text](image-1.png)
+![image-1](https://github.com/user-attachments/assets/d2be775b-0e63-4479-98e9-31ee6c03fe3d)
 
 - ***/upload*** : Insert csv from data folder
-![alt text](image-2.png)
+![image-2](https://github.com/user-attachments/assets/4846d9fa-1caf-4b1a-8cd5-75d2462416ba)
 
 - ***/train-model*** : Updating training. In the next images, you can see how the .pkl file was updated in the source code when the process was executed in API.
-![alt text](image-3.png)
-![alt text](image-4.png)
+![image-3](https://github.com/user-attachments/assets/76f9ea9c-eaa8-4131-b51e-14fb6a993867)
+![image-4](https://github.com/user-attachments/assets/f7a90dcb-56e3-4ed6-8944-dc9057c9eb48)
 
 - ***/train-model*** : A box is available for entering new sensor B measurements with which to generate predictions. As a result, a json is generated corresponding to the new instance that is added to the database.
-![alt text](image-5.png)
-![alt text](image-6.png)
-![alt text](image-7.png)
+![image-5](https://github.com/user-attachments/assets/bc24ef77-8962-4649-8f02-5ae0f7e82cc6)
+![image-6](https://github.com/user-attachments/assets/af99add0-b4f1-433b-8567-7648fdcb6b91)
+![image-7](https://github.com/user-attachments/assets/2947856f-8379-4e2a-8708-343d97160889)
