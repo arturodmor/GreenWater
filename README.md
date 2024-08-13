@@ -31,7 +31,9 @@ Contains the file data.csv with the raw data.
 
 ### Database
 Contains the sqlite predictions.db with RegressionModel results ordered by timestamp execution. in the following image you can see its structure using the Dbeaver desktop interface.
-![image](https://github.com/user-attachments/assets/8d13f6dc-0db3-4772-9ecd-477d9c7cbb54)
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/8d13f6dc-0db3-4772-9ecd-477d9c7cbb54">
+</div>
 
 ### GreenWater
 This is the project package with which the api executes its functionalities. It is governed by the Utils() class that stores the different project directories. The methods inside the class are:
@@ -47,9 +49,11 @@ Is the folder that contains the train results, updating it according to the date
 ## API demostration
 
 To start the API service, execute the following command:
+
     ```bash
     uvicorn api:app --reload
     ```
+    
 The terminal will display the IP to which the service is pointing. If you using the extension /docs, we can see the main menu:
 ![image-1](https://github.com/user-attachments/assets/d2be775b-0e63-4479-98e9-31ee6c03fe3d)
 
