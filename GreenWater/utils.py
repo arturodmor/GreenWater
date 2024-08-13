@@ -48,6 +48,12 @@ class Utils():
 
     def train_model(self):
 
+        """To train LinearRegression model, and save results
+
+        Returns:
+            model.pkl: The model results are storing in .pkl inside of /models 
+        """
+
         # Reshape data
         X = self.df['sensor_b'].to_numpy().reshape(-1,1)
         y = self.df['sensor_a'].to_numpy().reshape(-1,1)
