@@ -12,7 +12,7 @@ A Python package to deploy FastAPI capable to optimize the water purification do
     ```
 2. Install dependencies with a conda environment:
     ```bash
-    conda env create --name recoveredenv --file environment.yml
+    conda env create --name GreenWater --file environment.yml
     ```
 3. If the user prefers use requirements:
     ```bash
